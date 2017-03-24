@@ -1,0 +1,7 @@
+if x.get('postback',None):
+              if x.get('postback').get('payload')== 'ANOTHER_PAYLOAD':
+                  for att in x['message'].get('attachments'):
+                      bot.send_text_message(recipient_id,"I'm sorry to hear that, what are your symptoms?")
+          elif x.get('postback', None):
+              if x.get('postback').get('payload')== 'USER_DEFINED_PAYLOAD':
+                  bot.send_text_message(recipient_id,"Great! Have an apple!")
