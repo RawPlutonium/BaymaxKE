@@ -1,4 +1,4 @@
 flask
 requests
-nltk==2.0.4
+nltk
 email_reply_parser
