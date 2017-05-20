@@ -1,8 +1,4 @@
 flask
 requests
-<<<<<<< HEAD
 nltk==3.0.0
-=======
-nltk
->>>>>>> ed79a21da7423088318a48474925df2264a28651
 email_reply_parser
