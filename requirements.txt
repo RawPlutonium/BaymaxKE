@@ -1,4 +1,6 @@
 flask
 requests
-nltk==3.0.0
+nltk==2.0.4
 email_reply_parser
+messengerbot
+fbmq
