@@ -19,48 +19,6 @@ messenger = MessengerClient(access_token=FACEBOOK_TOKEN)
 
 
 
-# Send button template
-postback_button1 = elements.PostbackButton(
-   title='Good',
-   payload='USER_DEFINED_PAYLOAD'
-)
-postback_button2 = elements.PostbackButton(
-   title='Not So Good',
-   payload='USER_DEFINED_PAYLOAD2'
-)
-postback_button3 = elements.PostbackButton(
-   title='Headache',
-   payload='USER_DEFINED_PAYLOAD3'
-)
-postback_button4 = elements.PostbackButton(
-   title='Stomachache',
-   payload='USER_DEFINED_PAYLOAD4'
-)
-postback_button5 = elements.PostbackButton(
-   title='Cough',
-   payload='USER_DEFINED_PAYLOAD5'
-)
-postback_button6 = elements.PostbackButton(
-   title='Diarrhoea',
-   payload='USER_DEFINED_PAYLOAD6'
-)
-
-template1 = templates.ButtonTemplate(
-   text='How are you feeling now?',
-   buttons=[
-
-       postback_button1 , postback_button2
-   ]
-)
-template2 = templates.ButtonTemplate(
-   text="I am sorry, what symptom do you have?",
-   buttons=[
-       postback_button3, postback_button4, postback_button5, postback_button6
-   ]
-)
-attachment1 = attachments.TemplateAttachment(template=template1)
-attachment2 = attachments.TemplateAttachment(template=template2)
-
 @app.route('/verify', methods=['GET'])
 def verify():
     if request.args.get('hub.verify_token', '') == '90293':
@@ -158,23 +116,11 @@ def hello():
 
                     if x['message'].get('text'):
                         message = x['message']['text']
-
-
-
                         if message.lower() == 'hi' or message.lower() == 'hello':
                         #send message
                             message = messages.Message(text='Hello I\'m Baymax, your personal healthcare companion')
                             requ = messages.MessageRequest(recipient, message)
                             messenger.send(requ)
-
-                            url = 'https://images7.alphacoders.com/549/549678.jpg'
-                            result = bot.send_image_url(recipient_id, url)
-
-                            attachment1 = attachments.TemplateAttachment(template=template1)
-                            message = messages.Message(attachment=attachment1)
-                            reque = messages.MessageRequest(recipient, message)
-                            messenger.send(reque)
-
                         else:
                             try:
                                 number = int(message)
